@@ -21,12 +21,15 @@
       v-if="error"
       class="flex items-center gap-1.5 font-sans text-xs text-error"
     >
+      <CircleAlert class="size-3.5 shrink-0" />
       {{ error }}
     </p>
   </div>
 </template>
 
 <script setup lang="ts">
+import { CircleAlert } from '@lucide/vue'
+
 interface BaseInputProps {
   id: string
   label?: string
