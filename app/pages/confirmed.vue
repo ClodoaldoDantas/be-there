@@ -1,3 +1,3 @@
 <template>
-    <p>Confirmação de presença</p>
+  <p>Confirmação de presença</p>
 </template>
