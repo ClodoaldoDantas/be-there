@@ -19,7 +19,7 @@
 
     <p
       v-if="error"
-      class="flex items-center gap-1.5 font-sans text-[12px] text-error"
+      class="flex items-center gap-1.5 font-sans text-xs text-error"
     >
       {{ error }}
     </p>
