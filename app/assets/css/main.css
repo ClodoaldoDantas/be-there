@@ -4,9 +4,23 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Fraunces", ui-serif, Georgia, serif;
+
+  --color-bg: #FBF6F0;
+  --color-soft: #F6EAE3;
+  --color-line: #E9DED6;
+  --color-ink: #2A1E2C;
+  --color-muted: #7C6F7D;
+  --color-accent: #C6416B;
+  --color-accent-hover: #A83458;
+  --color-gold: #E9C489;
+  --background-image-hero-scrim: linear-gradient(180deg, #2A1E2C00 0%, #2A1E2C55 50%, #2A1E2CF2 100%);
 }
 
 @layer base {
+  body {
+    background-color: var(--color-bg);
+  }
+
   h1,
   h2,
   h3,
