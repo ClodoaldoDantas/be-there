@@ -25,6 +25,19 @@
 
         <div class="flex flex-col gap-2">
           <span class="font-sans text-[10px] uppercase tracking-wider text-muted">
+            with icon
+          </span>
+          <BaseButton
+            type="submit"
+            aria-label="Confirmar presença"
+          >
+            <Check class="size-5" />
+            Confirmar presença
+          </BaseButton>
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-muted">
             disabled
           </span>
           <BaseButton disabled>
@@ -82,6 +95,8 @@
 </template>
 
 <script setup lang="ts">
+import { Check } from '@lucide/vue'
+
 const nome = ref('Maria Silva')
 const nomeInvalido = ref('Maria')
 </script>
