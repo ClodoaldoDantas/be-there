@@ -41,6 +41,47 @@
           </BaseButton>
         </div>
       </div>
+
+      <div class="flex flex-col gap-5 rounded-2xl border border-line bg-white p-5">
+        <div class="flex flex-col gap-2">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-muted">
+            default
+          </span>
+          <BaseInput
+            id="nome"
+            label="Seu nome completo"
+            placeholder="Ex.: Maria Silva"
+          />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-muted">
+            preenchido
+          </span>
+          <BaseInput
+            id="nome"
+            v-model="nome"
+            label="Seu nome completo"
+          />
+        </div>
+
+        <div class="flex flex-col gap-2">
+          <span class="font-sans text-[10px] uppercase tracking-wider text-muted">
+            erro
+          </span>
+          <BaseInput
+            id="nomeInvalido"
+            v-model="nomeInvalido"
+            label="Seu nome completo"
+            error="Informe nome e sobrenome."
+          />
+        </div>
+      </div>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+const nome = ref('Maria Silva')
+const nomeInvalido = ref('Maria')
+</script>
