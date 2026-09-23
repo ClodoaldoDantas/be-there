@@ -19,6 +19,7 @@ Nuxt 4 + Vue 3 + Tailwind v4 app. UI copy is in Portuguese.
 ## Styling
 - Tailwind v4 is wired through the `@tailwindcss/vite` plugin in `nuxt.config.ts`, not the `@nuxt/tailwindcss` module.
 - Design tokens live in `app/assets/css/main.css` under `@theme` (`--color-*`, `--font-*`). Use the semantic utility names, not raw hex: `bg-accent`, `text-ink`, `text-muted`, `border-line`, `bg-soft`, `text-error`, `font-display`.
+- Prefer Tailwind's built-in scale over arbitrary bracket values or raw pixels. Round design values to the nearest step (`text-5xl` not `text-[46px]`, `pb-8` not `pb-[30px]`, `tracking-widest` not `tracking-[2.4px]`). Tailwind v4 dynamic spacing (`h-108`, `gap-7`) is fine; `[...]` and `px` values are a last resort.
 
 ## Conventions
 - ESLint style (set in `nuxt.config.ts` `eslint.config.stylistic`): no semicolons, single quotes, no trailing commas, 2-space indent. `eslint.config.mjs` is generated from `.nuxt/`.
