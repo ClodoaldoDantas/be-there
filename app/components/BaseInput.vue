@@ -13,6 +13,7 @@
     <input
       :id="id"
       v-model="model"
+      :placeholder="placeholder"
       class="w-full rounded-2xl border bg-white px-4 py-3.5 font-sans text-sm text-ink outline-none transition-colors placeholder:text-muted disabled:cursor-not-allowed disabled:bg-soft disabled:text-muted"
       :class="error ? 'border-error focus:border-error' : 'border-line focus:border-accent'"
     >
@@ -33,10 +34,11 @@ import { CircleAlert } from '@lucide/vue'
 interface BaseInputProps {
   id: string
   label?: string
+  placeholder?: string
   error?: string
 }
 
-const { id, label, error } = defineProps<BaseInputProps>()
+const { id, label, placeholder, error } = defineProps<BaseInputProps>()
 
 const model = defineModel<string>()
 </script>
