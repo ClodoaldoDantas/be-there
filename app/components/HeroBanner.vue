@@ -14,7 +14,7 @@
       </p>
 
       <h1 class="font-display text-5xl leading-none font-semibold text-white lg:text-6xl">
-        Helena faz 30
+        Maria faz 30
       </h1>
 
       <p class="text-sm text-white/80 md:text-base md:leading-normal">
