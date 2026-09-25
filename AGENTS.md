@@ -1,26 +1,25 @@
 # AGENTS.md
 
-Nuxt 4 + Vue 3 + Tailwind v4 app. UI copy is in Portuguese.
+App Nuxt 4 + Vue 3 + Tailwind v4.
 
-## Commands
-- Package manager is **pnpm** (uses `pnpm-lock.yaml`). Don't use npm/yarn.
-- `pnpm dev` — dev server on `http://localhost:3000` (`devtools` enabled).
-- `pnpm build` / `pnpm preview` — production build / serve it locally.
+## Comandos
+- O gerenciador de pacotes é o **pnpm** (usa `pnpm-lock.yaml`). Não use npm/yarn.
+- `pnpm dev` — servidor de desenvolvimento em `http://localhost:3000` (`devtools` habilitado).
+- `pnpm build` / `pnpm preview` — build de produção / servir localmente.
 - `pnpm lint` / `pnpm lint:fix` — ESLint via `@nuxt/eslint`.
-- `pnpm install` triggers `postinstall: nuxt prepare`, which regenerates the gitignored `.nuxt/` types (auto-imports, tsconfig refs).
+- `pnpm install` dispara `postinstall: nuxt prepare`, que regenera os tipos do `.nuxt/` (gitignored) (auto-imports, refs do tsconfig).
 
-## Structure
-- Nuxt 4 `app/` srcDir layout: `app/pages`, `app/components`, `app/assets/css`.
-- `app/pages/*.vue` are file-routed automatically; there is no `app.vue` or `layouts/` yet.
-- Components (`BaseButton`, `BaseInput`, `BaseIconWrap`) are **auto-imported** — do not add explicit imports for them.
-- Lucide icons are **not** auto-imported; import named icons from `@lucide/vue` (e.g. `import { CircleAlert } from '@lucide/vue'`).
-- Components accept an optional `class` prop exposed as `customClass` (see `BaseIconWrap.vue`), because `class` collides with the native attr.
+## Estrutura
+- Layout de srcDir `app/` do Nuxt 4: `app/pages`, `app/components`, `app/assets/css`.
+- `app/pages/*.vue` são roteadas por arquivo automaticamente; não existe `app.vue`.
+- Components (`BaseButton`, `BaseInput`, `BaseIconWrap`) são **auto-importados** — não adicione imports explícitos para eles.
+- Ícones do Lucide **não** são auto-importados; importe os ícones nomeados de `@lucide/vue` (ex.: `import { CircleAlert } from '@lucide/vue'`).
 
-## Styling
-- Tailwind v4 is wired through the `@tailwindcss/vite` plugin in `nuxt.config.ts`, not the `@nuxt/tailwindcss` module.
-- Design tokens live in `app/assets/css/main.css` under `@theme` (`--color-*`, `--font-*`). Use the semantic utility names, not raw hex: `bg-accent`, `text-ink`, `text-muted`, `border-line`, `bg-soft`, `text-error`, `font-display`.
-- Prefer Tailwind's built-in scale over arbitrary bracket values or raw pixels. Round design values to the nearest step (`text-5xl` not `text-[46px]`, `pb-8` not `pb-[30px]`, `tracking-widest` not `tracking-[2.4px]`). Tailwind v4 dynamic spacing (`h-108`, `gap-7`) is fine; `[...]` and `px` values are a last resort.
+## Estilização
+- O Tailwind v4 é conectado através do plugin `@tailwindcss/vite` no `nuxt.config.ts`, e não do módulo `@nuxt/tailwindcss`.
+- Os design tokens ficam em `app/assets/css/main.css` sob `@theme` (`--color-*`, `--font-*`). Use os nomes de utilitários semânticos, não hex bruto: `bg-accent`, `text-ink`, `text-muted`, `border-line`, `bg-soft`, `text-error`, `font-display`.
+- Prefira a escala nativa do Tailwind a valores arbitrários entre colchetes ou pixels crus. Arredonde valores de design para o passo mais próximo (`text-5xl` em vez de `text-[46px]`, `pb-8` em vez de `pb-[30px]`, `tracking-widest` em vez de `tracking-[2.4px]`). O espaçamento dinâmico do Tailwind v4 (`h-108`, `gap-7`) é válido; valores `[...]` e em `px` são último recurso.
 
-## Conventions
-- ESLint style (set in `nuxt.config.ts` `eslint.config.stylistic`): no semicolons, single quotes, no trailing commas, 2-space indent. `eslint.config.mjs` is generated from `.nuxt/`.
-- Commit messages follow Conventional Commits (`feat: ...`); default branch is `main`.
+## Convenções
+- Estilo do ESLint (definido em `nuxt.config.ts` `eslint.config.stylistic`): sem ponto e vírgula, aspas simples, sem vírgula final, indentação de 2 espaços. O `eslint.config.mjs` é gerado a partir do `.nuxt/`.
+- As mensagens de commit seguem Conventional Commits (`feat: ...`); a branch padrão é `main`.
