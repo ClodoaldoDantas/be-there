@@ -10,7 +10,7 @@
       </h2>
 
       <p class="text-sm leading-normal text-muted">
-        Confirme sua presença até 10 de junho. Assim a Helena sabe quantos pratos preparar.
+        Confirme sua presença até 10 de junho. Assim a Maria sabe quantos pratos preparar.
       </p>
     </header>
 
