@@ -89,5 +89,7 @@ const onSubmit = handleSubmit(async (values) => {
   }
 
   console.log(payload)
+
+  await navigateTo('/confirmed')
 })
 </script>
