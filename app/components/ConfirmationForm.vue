@@ -26,16 +26,12 @@
         <span class="hidden font-normal text-muted md:inline">máx. 3</span>
       </legend>
 
-      <div class="mt-2 flex gap-2">
-        <BaseButton
-          v-for="value in attendantOptions"
-          :key="value"
-          :variant="value === attendants ? 'solid' : 'outline'"
-          @click="attendants = value"
-        >
-          {{ value }}
-        </BaseButton>
-      </div>
+      <BaseNumberStepper
+        v-model="attendants"
+        :min="0"
+        :max="3"
+        class="mt-2"
+      />
     </fieldset>
 
     <BaseButton
@@ -57,7 +53,6 @@ import { toTypedSchema } from '@vee-validate/zod'
 import { delay } from '~/utils/delay'
 
 const whatsappMask = ['(##) ####-####', '(##) #####-####']
-const attendantOptions = Array.from({ length: 4 }, (_, i) => i)
 
 const confirmationSchema = z.object({
   name: z.string().trim().min(3, 'Informe seu nome completo'),
