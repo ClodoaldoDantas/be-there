@@ -1,7 +1,7 @@
 <template>
   <section class="relative h-108 w-full shrink-0 overflow-hidden md:h-93 lg:h-auto lg:w-150">
     <img
-      src="/hero.jpg"
+      src="/hero.webp"
       alt="Mesa de aniversário com velas e bandeirinhas"
       class="absolute inset-0 size-full object-cover"
     >
