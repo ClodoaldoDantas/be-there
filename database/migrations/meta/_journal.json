@@ -1,0 +1,13 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1790545644238,
+      "tag": "0000_free_prima",
+      "breakpoints": true
+    }
+  ]
+}
