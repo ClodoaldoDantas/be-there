@@ -29,8 +29,8 @@ Se o **texto** mudar por breakpoint, mantenha os dois e alterne com `md:hidden` 
 (evite `matchMedia` para não quebrar a hidratação).
 
 ## Passo 5 — Validar no browser
-Playwright em `390x844`, `834x1112` e `1440x960` (screenshot fullPage). Confira os estilos
-computados (`fontSize`, `letterSpacing`, `textTransform`) contra o design e o layout/contraste.
+Utilize o MCP do Playwright para validar o que foi implementado no browser. Confira os estilos computados (`fontSize`, `letterSpacing`, `textTransform`) contra o design e o layout/contraste.
+Valide nos 3 breakpoints: mobile, tablet, desktop.
 
 ## Passo 6 — Lint e limpeza
 Rode `pnpm lint`, remova temporários e não commite sem o usuário pedir.
