@@ -34,6 +34,14 @@
       />
     </fieldset>
 
+    <p
+      v-if="submitError"
+      class="flex items-center gap-1.5 font-sans text-xs text-error"
+    >
+      <CircleAlert class="size-3.5 shrink-0" />
+      {{ submitError }}
+    </p>
+
     <BaseButton
       type="submit"
       :is-loading="isSubmitting"
@@ -47,10 +55,9 @@
 
 <script setup lang="ts">
 import { z } from 'zod'
-import { Check } from '@lucide/vue'
+import { Check, CircleAlert } from '@lucide/vue'
 import { useForm } from 'vee-validate'
 import { toTypedSchema } from '@vee-validate/zod'
-import { delay } from '~/utils/delay'
 
 const whatsappMask = ['(##) ####-####', '(##) #####-####']
 
@@ -74,8 +81,10 @@ const [name] = defineField('name')
 const [whatsapp] = defineField('whatsapp')
 const [attendants] = defineField('attendants')
 
+const submitError = ref('')
+
 const onSubmit = handleSubmit(async (values) => {
-  await delay(1500)
+  submitError.value = ''
 
   const payload: ConfirmationPayload = {
     name: values.name.trim(),
@@ -83,8 +92,16 @@ const onSubmit = handleSubmit(async (values) => {
     attendants: values.attendants
   }
 
-  console.log(payload)
+  try {
+    await $fetch('/api/guests', {
+      method: 'POST',
+      body: payload
+    })
 
-  await navigateTo('/confirmed')
+    await navigateTo('/confirmed')
+  }
+  catch {
+    submitError.value = 'Não foi possível confirmar sua presença. Tente novamente.'
+  }
 })
 </script>
