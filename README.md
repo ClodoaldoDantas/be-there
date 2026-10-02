@@ -1,75 +1,90 @@
-# Nuxt Minimal Starter
+# Be There
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Aplicação de confirmação de presença em eventos. O convidado informa nome, WhatsApp e quantos acompanhantes levará; os dados são salvos no banco e a lista de confirmações pode ser consultada via API. Projeto de estudo e demonstração.
+
+## Stack
+
+- **Nuxt 4** + Vue 3 + TypeScript
+- **Tailwind CSS v4**
+- **VeeValidate** + **Zod** (formulário e validação)
+- **Turso (libSQL)** + **Drizzle ORM**
+- **pnpm** como gerenciador de pacotes
+
+## Pré-requisitos
+
+- Node.js 20+
+- pnpm
+- Uma conta/banco no [Turso](https://turso.tech)
 
 ## Setup
 
-Make sure to install dependencies:
+1. Instale as dependências:
+
+   ```bash
+   pnpm install
+   ```
+
+2. Configure as variáveis de ambiente em `.env` (baseie-se em `.env.example`):
+
+   ```bash
+   TURSO_CONNECTION_URL=libsql://...
+   TURSO_AUTH_TOKEN=...
+   ```
+
+3. Aplique as migrations no banco:
+
+   ```bash
+   pnpm db:migrate
+   ```
+
+4. (Opcional) Popule o banco com convidados de exemplo:
+
+   ```bash
+   pnpm db:seed
+   ```
+
+## Desenvolvimento
+
+Inicie o servidor em `http://localhost:3000`:
 
 ```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+## Scripts
 
-Build the application for production:
+| Comando | Descrição |
+| --- | --- |
+| `pnpm dev` | Servidor de desenvolvimento |
+| `pnpm build` | Build de produção |
+| `pnpm preview` | Pré-visualiza o build de produção |
+| `pnpm lint` | Executa o ESLint |
+| `pnpm lint:fix` | Corrige problemas de lint |
+| `pnpm db:generate` | Gera migrations a partir do schema |
+| `pnpm db:migrate` | Aplica as migrations no banco |
+| `pnpm db:push` | Sincroniza o schema direto no banco |
+| `pnpm db:studio` | Abre o Drizzle Studio |
+| `pnpm db:seed` | Insere convidados de exemplo |
 
-```bash
-# npm
-npm run build
+## API
 
-# pnpm
-pnpm build
+| Método | Rota | Descrição |
+| --- | --- | --- |
+| `GET` | `/api/guests` | Lista os convidados cadastrados |
+| `POST` | `/api/guests` | Cadastra um convidado (`name`, `whatsapp`, `attendants`) |
 
-# yarn
-yarn build
+## Estrutura
 
-# bun
-bun run build
+```
+app/            # Front-end (pages, components, layouts, assets)
+database/       # Schema, client Drizzle e seed
+server/api/     # Rotas do Nitro (endpoints)
+specs/          # Especificações das features
 ```
 
-Locally preview production build:
+## Fluxo
 
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+1. O usuário acessa `/` e preenche o formulário (`ConfirmationForm`).
+2. O app envia `POST /api/guests` e persiste a confirmação.
+3. Em caso de sucesso, navega para `/confirmed`.
+4. A lista cadastrada pode ser conferida em `GET /api/guests`.
