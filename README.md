@@ -73,6 +73,12 @@ pnpm dev
 | `GET` | `/api/guests` | Lista os convidados cadastrados |
 | `POST` | `/api/guests` | Cadastra um convidado (`name`, `whatsapp`, `attendants`) |
 
+Para conferir os convidados cadastrados, com o servidor rodando:
+
+```bash
+curl http://localhost:3000/api/guests
+```
+
 ## Estrutura
 
 ```
